@@ -972,6 +972,7 @@
         const modalText = document.getElementById('modal-text');
 
         openLetterBtn.addEventListener('click', () => {
+            playMusicWithFade();
             modalInitial.style.display = 'none';
             modalText.classList.add('show');
         });
@@ -1407,6 +1408,32 @@
                     showFallback();
                 });
         }
+        function playMusicWithFade() {
+    const audio = document.getElementById("bgMusic");
+
+    audio.volume = 0;
+    audio.play();
+
+    const fadeDuration = 4000; // 4 seconds
+    const fadeInterval = 50;
+    const steps = fadeDuration / fadeInterval;
+    let currentStep = 0;
+
+    const fade = setInterval(() => {
+        currentStep++;
+        audio.volume = Math.min(currentStep / steps, 1);
+
+        if (currentStep >= steps) {
+            clearInterval(fade);
+        }
+    }, fadeInterval);
+}
+
     </script>
+    <audio id="bgMusic" loop>
+    <source src="song-4.mp4" type="audio/mp4">
+</audio>
+
 </body>
+
 </html>
