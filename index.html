@@ -501,7 +501,7 @@
                 await db.ref("Auto-Host/" + token).set(data);
 
                 // Success UI
-                const link = `${window.location.origin}/hosted.html?token=${token}`;
+                const link = `https://shashwat-gupta57.github.io/cove-t2/hosted.html?token=${token}`;
                 document.getElementById('form-card').style.display = 'none';
                 document.getElementById('result-container').style.display = 'block';
                 document.getElementById('result-link').textContent = link;
@@ -524,4 +524,5 @@
         });
     </script>
 </body>
+
 </html>
