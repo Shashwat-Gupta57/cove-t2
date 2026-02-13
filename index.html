@@ -501,19 +501,38 @@
                 await db.ref("Auto-Host/" + token).set(data);
 
                 // Success UI
-                const link = `https://shashwat-gupta57.github.io/cove-t2/hosted.html?token=${token}`;
+                const link = `http://valentines.soon.it/hosted.html?token=${token}`;
                 document.getElementById('form-card').style.display = 'none';
                 document.getElementById('result-container').style.display = 'block';
                 document.getElementById('result-link').textContent = link;
 
-                // Setup Copy Button
-                document.getElementById('copyBtn').onclick = () => {
-                    navigator.clipboard.writeText(link).then(() => {
-                        const copyBtn = document.getElementById('copyBtn');
-                        copyBtn.textContent = 'Copied! ✅';
-                        setTimeout(() => copyBtn.textContent = 'Copy Link 📋', 2000);
-                    });
-                };
+                document.getElementById('copyBtn').onclick = async () => {
+    const copyBtn = document.getElementById('copyBtn');
+
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(link);
+        } else {
+            // Fallback for insecure context
+            const textArea = document.createElement("textarea");
+            textArea.value = link;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand("copy");
+            textArea.remove();
+        }
+
+        copyBtn.textContent = 'Copied! ✅';
+        setTimeout(() => copyBtn.textContent = 'Copy Link 📋', 2000);
+
+    } catch (err) {
+        alert("Copy failed. Please copy manually.");
+    }
+};
+
 
             } catch (error) {
                 console.error("Error saving to Firebase:", error);
@@ -526,3 +545,4 @@
 </body>
 
 </html>
+
