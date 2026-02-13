@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title id="page-title">For Someone ❤️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Color Variables & Reset --- */
+        :root {
+            --blush-pink: #F8C8DC;
+            --soft-rose: #E75480;
+            --muted-lavender: #C8A2C8;
+            --warm-plum: #7D4E8D;
+            --creamy-white: #FFF8F2;
+            --light-peach: #FFE5EC;
+            --text-charcoal: #3A3A3A;
+            --text-cocoa: #5A3E36;
+            
+            --gradient-main: linear-gradient(135deg, #F8C8DC, #C8A2C8);
+            --gradient-final: linear-gradient(to bottom, #FFF8F2, #ffe5ec, #f8c8dc);
+            --shadow-soft: 0 10px 25px rgba(125, 78, 141, 0.15);
+            --font-hand: 'Dancing Script', cursive;
+            --font-body: 'Quicksand', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--creamy-white);
+            color: var(--text-charcoal);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* --- Floating Background Hearts --- */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: var(--blush-pink);
+            opacity: 0.4;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* --- Layout & Typography --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-hand);
+            color: var(--text-cocoa);
+        }
+
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, var(--light-peach) 0%, transparent 70%);
+        }
+
+        #hero h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: var(--soft-rose);
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+            animation: pulseText 3s infinite ease-in-out;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            color: var(--text-cocoa);
+            max-width: 600px;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* --- Appreciation Section --- */
+        #appreciation .content-wrapper {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 2px dashed var(--muted-lavender);
+            position: relative;
+        }
+
+        /* Tape effect */
+        .tape {
+            position: absolute;
+            width: 120px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.6);
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(2px);
+            border-left: 2px dashed rgba(0,0,0,0.1);
+            border-right: 2px dashed rgba(0,0,0,0.1);
+        }
+
+        #appreciation p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-charcoal);
+        }
+
+        #appreciation strong {
+            color: var(--soft-rose);
+        }
+
+        /* --- Pickup Lines --- */
+        #pickup-lines h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--warm-plum);
+        }
+
+        .pickup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .pickup-card {
+            background: var(--light-peach);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-cocoa);
+            transition: all 0.3s ease;
+            cursor: default;
+            border: 1px solid var(--blush-pink);
+        }
+
+        .pickup-card:hover {
+            background: var(--blush-pink);
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        /* --- Reasons Section --- */
+        #reasons h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        .reasons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .reason-item {
+            background: white;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+            border: 4px solid var(--muted-lavender);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reason-item:hover {
+            transform: translateY(-10px) scale(1.1);
+            border-color: var(--soft-rose);
+        }
+
+        .reason-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .reason-text {
+            font-weight: 600;
+            color: var(--warm-plum);
+        }
+
+        /* --- Confession Section --- */
+        #confession {
+            text-align: center;
+        }
+
+        .letter {
+            background-color: #fffcf8;
+            padding: 50px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--blush-pink);
+            transform: translate(10px, 10px);
+            z-index: -1;
+        }
+
+        .signature {
+            font-family: var(--font-hand);
+            font-size: 2rem;
+            margin-top: 30px;
+            color: var(--text-cocoa);
+            text-align: right;
+        }
+
+        /* --- Mini Games Section --- */
+        #mini-games {
+            background: linear-gradient(to bottom, var(--creamy-white), #fff0f6);
+            padding: 60px 0;
+        }
+
+        #mini-games h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--soft-rose);
+            margin-bottom: 10px;
+        }
+
+        #mini-games .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-charcoal);
+            margin-bottom: 50px;
+            font-family: var(--font-body);
+        }
+
+        .game-wrapper {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-title {
+            font-family: var(--font-hand);
+            font-size: 2rem;
+            color: var(--warm-plum);
+            margin-bottom: 20px;
+        }
+
+        /* Memory Game Styles */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .memory-card {
+            background-color: transparent;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .memory-card.flip {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card .front, .memory-card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .memory-card .front {
+            background: linear-gradient(135deg, var(--light-peach), var(--blush-pink));
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .memory-card .back {
+            background: white;
+            transform: rotateY(180deg);
+            font-size: 2rem;
+            border: 2px solid var(--blush-pink);
+        }
+
+        /* Catcher Game Styles */
+        .catcher-container {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(to top, #fff5f8, #e8f5e9); /* Soft sky/ground */
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: none; /* Hide default cursor inside game */
+            border: 2px solid var(--muted-lavender);
+        }
+
+        .catcher-player {
+            width: 40px;
+            height: 40px;
+            background: rgba(231, 84, 128, 0.3);
+            border: 2px solid var(--soft-rose);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--blush-pink);
+        }
+        
+        .catcher-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            user-select: none;
+            animation: floatUpGame 4s linear forwards;
+        }
+
+        @keyframes floatUpGame {
+            to { transform: translateY(-380px); opacity: 0; }
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .game-btn {
+            background: var(--soft-rose);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: transform 0.2s;
+        }
+        
+        .game-btn:hover { transform: scale(1.05); }
+
+        .game-message {
+            font-size: 1.2rem;
+            color: var(--warm-plum);
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+
+        .final-cue {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+            display: none;
+        }
+        
+        .final-cue.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Final Decision Section (Climax) --- */
+        #final-decision {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: var(--gradient-final);
+            padding-top: 100px;
+            margin-top: 0; /* Connected to games */
+        }
+
+        /* Wave Divider */
+        .custom-shape-divider-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape-divider-top svg {
+            position: relative;
+            display: block;
+            width: calc(133% + 1.3px);
+            height: 80px;
+        }
+
+        .custom-shape-divider-top .shape-fill {
+            fill: #fff0f6; /* Matches mini-games background */
+        }
+
+        #final-decision h2 {
+            font-size: 4rem;
+            margin-bottom: 50px;
+            color: var(--soft-rose);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .btn-yes {
+            background: var(--soft-rose);
+            color: white;
+            box-shadow: 0 5px 25px rgba(231, 84, 128, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background: #d63d6b;
+            box-shadow: 0 8px 30px rgba(231, 84, 128, 0.6);
+        }
+
+        .btn-think {
+            background: var(--muted-lavender);
+            color: white;
+            box-shadow: 0 5px 25px rgba(200, 162, 200, 0.4);
+        }
+
+        .btn-think:hover {
+            transform: scale(1.05);
+            background: #b38cb3;
+        }
+
+        /* --- Full Screen Overlays (YES & THINK) --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Success Overlay Specifics */
+        #success-overlay {
+            background: radial-gradient(circle, #fff0f5 0%, #ffe4e1 100%);
+        }
+
+        #success-overlay h2 {
+            font-size: 5rem;
+            color: var(--soft-rose);
+            margin-bottom: 20px;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #success-overlay p {
+            font-size: 2rem;
+            color: var(--text-cocoa);
+            max-width: 800px;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Think Overlay Specifics */
+        #think-overlay {
+            background: radial-gradient(circle, #f3e5f5 0%, #e1bee7 100%);
+        }
+
+        #think-overlay .think-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            border: 2px solid var(--muted-lavender);
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .overlay.active .think-card {
+            transform: translateY(0);
+        }
+
+        #think-overlay h2 {
+            font-size: 3.5rem;
+            color: var(--warm-plum);
+            margin-bottom: 20px;
+        }
+
+        #think-overlay p {
+            font-size: 1.3rem;
+            color: var(--text-charcoal);
+            line-height: 1.8;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2001;
+        }
+
+        /* --- Landing Modal --- */
+        #landing-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        #landing-modal.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-envelope {
+            background: white;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+            border-top: 5px solid var(--soft-rose);
+        }
+
+        #landing-modal.visible .modal-envelope {
+            transform: scale(1);
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--soft-rose);
+        }
+
+        .modal-btn {
+            margin-top: 25px;
+            background: var(--soft-rose);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.2s;
+        }
+
+        .modal-btn:hover {
+            background: #d63d6b;
+        }
+
+        .letter-revealed {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--text-cocoa);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .letter-revealed.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 600px) {
+            #hero h1 { font-size: 3.5rem; }
+            #pickup-lines h2, #reasons h2 { font-size: 2.5rem; }
+            #final-decision h2 { font-size: 3rem; }
+            .btn { padding: 12px 30px; font-size: 1.2rem; }
+            .letter { padding: 30px 20px; }
+            #success-overlay h2 { font-size: 3.5rem; }
+            #success-overlay p { font-size: 1.5rem; }
+            .memory-grid { gap: 8px; }
+            .memory-card .back { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body class="no-scroll">
+
+    <!-- Floating Background Hearts -->
+    <div class="bg-hearts" id="bg-hearts">
+        <!-- JS will populate this -->
+    </div>
+
+    <!-- Landing Letter Modal -->
+    <div id="landing-modal" class="visible">
+        <div class="modal-envelope">
+            <div class="modal-content" id="modal-initial">
+                <div class="modal-icon">💌</div>
+                <h2 id="modal-heading" style="font-size: 2rem; margin-bottom: 10px;">For You</h2>
+                <p>Before you scroll any further... I need to say this properly.</p>
+                <button class="modal-btn" id="open-letter-btn">Open the Letter ❤️</button>
+            </div>
+            
+            <div class="letter-revealed" id="modal-text">
+                <p id="modal-greeting">Hi there,</p>
+                <p style="margin: 15px 0;">I created this little corner of the internet just for you. Take your time, scroll slowly, and know that every word here comes from the heart.</p>
+                <p style="font-size: 0.9rem; font-style: italic; color: #888;">(And yes, I rehearsed this whole thing in my head about 17 times.)</p>
+                <button class="modal-btn" id="close-modal-btn" style="background: var(--muted-lavender); margin-top: 20px;">Okay, let's go ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="visible">
+        <div class="container">
+            <h1 id="hero-heading">For You ❤️</h1>
+            <p>A little corner of the internet, just for you.</p>
+        </div>
+    </section>
+
+    <!-- Appreciation Section -->
+    <section id="appreciation">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="tape"></div>
+                <h2 style="text-align: center; margin-bottom: 30px; font-size: 2.5rem;">To My Safe Space</h2>
+                <!-- Dynamic Appreciation Text -->
+                <p id="appreciation-text" style="white-space: pre-line;">
+                    Loading appreciation...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pickup Lines Section -->
+    <section id="pickup-lines">
+        <div class="container">
+            <h2>Just to make you smile...</h2>
+            <div class="pickup-grid">
+                <div class="pickup-card">"Are you a camera? Because every time I look at you, I smile." 📸</div>
+                <div class="pickup-card">"Do you have a map? I keep getting lost in our conversations." 🗺️</div>
+                <div class="pickup-card">"Are you made of copper and tellurium? Because you're Cu-Te." 🧪</div>
+                <div class="pickup-card">"Is your name Wi-Fi? Because I'm feeling a really strong connection." 📶</div>
+                <div class="pickup-card">"I'm not a photographer, but I can definitely picture us together." 🖼️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons I Like You -->
+    <section id="reasons">
+        <div class="container">
+            <h2>Why You're Special</h2>
+            <div class="reasons-container">
+                <div class="reason-item">
+                    <div class="reason-icon">☀️</div>
+                    <div class="reason-text">Your Smile</div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">💛</div>
+                    <div class="reason-text">Your Kindness</div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">👂</div>
+                    <div class="reason-text">Understanding</div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">✨</div>
+                    <div class="reason-text">Positivity</div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon">🫂</div>
+                    <div class="reason-text">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confession Section -->
+    <section id="confession">
+        <div class="container">
+            <div class="letter">
+                <h2 style="margin-bottom: 20px;">A Confession</h2>
+                <p id="confession-greeting">Dear ...</p>
+                <!-- Dynamic Confession Text -->
+                <p id="confession-text" style="white-space: pre-line;">
+                    Loading confession...
+                </p>
+                <div class="signature" id="signature">- ...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Games Section -->
+    <section id="mini-games">
+        <div class="container">
+            <h2>Before the Final Question...</h2>
+            <p class="subtitle">Let’s see if destiny agrees. ✨</p>
+
+            <!-- Game 1: Memory -->
+            <div class="game-wrapper" id="memory-game-wrapper">
+                <h3 class="game-title">Memory of Us 💭</h3>
+                <div class="memory-grid" id="memory-grid">
+                    <!-- Cards injected via JS -->
+                </div>
+                
+                <div class="game-overlay" id="memory-overlay" style="display: none;">
+                    <div class="game-message">
+                        <span style="font-size: 3rem;">✨</span><br>
+                        Looks like we make a perfect match.
+                        <div style="font-size: 0.9rem; color: #888; margin-top: 10px;">(I promise I didn't rig this.)</div>
+                    </div>
+                    <div style="color: var(--soft-rose); font-weight: bold;">Completed! ❤️</div>
+                </div>
+            </div>
+
+            <!-- Game 2: Catch the Feelings -->
+            <div class="game-wrapper" id="catcher-game-wrapper">
+                <h3 class="game-title">Catch the Feelings 💌</h3>
+                <div class="catcher-container" id="catcher-area">
+                    <div class="catcher-player" id="catcher-cursor"></div>
+                    <!-- Hearts injected via JS -->
+                </div>
+                
+                <div class="game-overlay" id="catcher-start-overlay">
+                    <p class="game-message">Collect the floating hearts! <br>You have 30 seconds.</p>
+                    <button class="game-btn" id="start-catcher-btn">Start Playing</button>
+                </div>
+
+                <div class="game-overlay" id="catcher-result-overlay" style="display: none;">
+                    <div class="game-message" id="catcher-result-msg"></div>
+                    <div style="color: var(--soft-rose); font-weight: bold;">Completed! ❤️</div>
+                </div>
+                
+                <div style="position: absolute; top: 10px; right: 20px; font-weight: bold; color: var(--text-cocoa);">
+                    Score: <span id="catcher-score">0</span> | Time: <span id="catcher-timer">30</span>s
+                </div>
+            </div>
+
+            <div class="final-cue" id="final-cue">
+                <h3 style="color: var(--warm-plum);">Okay… I think you’re ready for the final question. 👇</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Decision Section (Climax) -->
+    <section id="final-decision">
+        <div class="custom-shape-divider-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <h2>Will You Be My Valentine?</h2>
+            <div class="button-group" id="btn-group">
+                <button class="btn btn-yes" id="yes-btn">YES ❤️</button>
+                <button class="btn btn-think" id="think-btn">Let Me Think 😊</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Overlay (YES) -->
+    <div class="overlay" id="success-overlay">
+        <div class="overlay-content">
+            <h2 id="success-title">She Said Yes! 💖</h2>
+            <p id="success-message">You've made me the happiest person.</p>
+            <p style="font-size: 1.3rem; margin-top: 30px; font-style: italic; opacity: 0.9;">
+                (Okay, I promise I won’t act cool about this. I’m internally screaming. Check your phone, I might be calling you right now! 😉)
+            </p>
+        </div>
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <!-- Think Overlay (Let Me Think) -->
+    <div class="overlay" id="think-overlay">
+        <div class="think-card">
+            <h2>Take Your Time 🌿</h2>
+            <p>That’s completely okay. You mean too much to me to rush anything.</p>
+            <p>Your comfort matters more than my answer.</p>
+            <p style="margin-top: 20px; font-size: 1rem; color: #888;">
+                (I’ll just pretend to be calm meanwhile. No pressure, seriously.)
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Background Hearts Animation ---
+        function createHearts() {
+            const container = document.getElementById('bg-hearts');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('bg-heart');
+                heart.innerHTML = '❤';
+                
+                // Random positioning and properties
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // --- 2. Landing Modal Logic ---
+        const landingModal = document.getElementById('landing-modal');
+        const openLetterBtn = document.getElementById('open-letter-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalInitial = document.getElementById('modal-initial');
+        const modalText = document.getElementById('modal-text');
+
+        openLetterBtn.addEventListener('click', () => {
+            modalInitial.style.display = 'none';
+            modalText.classList.add('show');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            landingModal.classList.remove('visible');
+            document.body.classList.remove('no-scroll');
+        });
+
+        // --- 3. Scroll Animation Observer ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'hero') { // Hero is already visible
+                observer.observe(section);
+            }
+        });
+
+        // --- 4. Game Progression Logic ---
+        let gamesCompleted = 0;
+        const finalCue = document.getElementById('final-cue');
+
+        function markGameComplete() {
+            gamesCompleted++;
+            if (gamesCompleted >= 2) {
+                setTimeout(() => {
+                    finalCue.classList.add('show');
+                }, 500);
+            }
+        }
+
+        // --- 5. Memory Game Logic ---
+        const memoryGrid = document.getElementById('memory-grid');
+        const memoryIcons = ['💛', '🌸', '✨', '🫂', '🌙', '☕', '❤️', '🌻'];
+        const memoryCards = [...memoryIcons, ...memoryIcons]; // Pairs
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+        let matchedPairs = 0;
+
+        // Shuffle
+        memoryCards.sort(() => 0.5 - Math.random());
+
+        // Create Board
+        memoryCards.forEach(icon => {
+            const card = document.createElement('div');
+            card.classList.add('memory-card');
+            card.dataset.icon = icon;
+            
+            const frontFace = document.createElement('div');
+            frontFace.classList.add('front');
+            frontFace.innerHTML = "?"; // Placeholder pattern could go here
+
+            const backFace = document.createElement('div');
+            backFace.classList.add('back');
+            backFace.innerHTML = icon;
+
+            card.appendChild(frontFace);
+            card.appendChild(backFace);
+            memoryGrid.appendChild(card);
+
+            card.addEventListener('click', flipCard);
+        });
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            this.classList.add('flip');
+
+            if (!hasFlippedCard) {
+                hasFlippedCard = true;
+                firstCard = this;
+                return;
+            }
+
+            secondCard = this;
+            checkForMatch();
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.icon === secondCard.dataset.icon;
+            isMatch ? disableCards() : unflipCards();
+        }
+
+        function disableCards() {
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            resetBoard();
+            matchedPairs++;
+            
+            if (matchedPairs === memoryIcons.length) {
+                setTimeout(() => {
+                    document.getElementById('memory-overlay').style.display = 'flex';
+                    // Mini confetti for game
+                    confettiBurst(document.getElementById('memory-game-wrapper'));
+                    markGameComplete();
+                }, 500);
+            }
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove('flip');
+                secondCard.classList.remove('flip');
+                resetBoard();
+            }, 1000);
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        function confettiBurst(element) {
+            // Simple localized confetti visual cue could go here, 
+            // but we'll stick to the overlay message for simplicity & elegance.
+        }
+
+        // --- 6. Catcher Game Logic ---
+        const catcherArea = document.getElementById('catcher-area');
+        const cursor = document.getElementById('catcher-cursor');
+        const startCatcherBtn = document.getElementById('start-catcher-btn');
+        const catcherStartOverlay = document.getElementById('catcher-start-overlay');
+        const catcherResultOverlay = document.getElementById('catcher-result-overlay');
+        const scoreEl = document.getElementById('catcher-score');
+        const timerEl = document.getElementById('catcher-timer');
+        const resultMsg = document.getElementById('catcher-result-msg');
+
+        let catcherScore = 0;
+        let catcherTime = 30;
+        let gameInterval;
+        let spawnInterval;
+        let isGameActive = false;
+
+        // Mouse Tracker
+        catcherArea.addEventListener('mousemove', (e) => {
+            if (!isGameActive) return;
+            const rect = catcherArea.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            
+            // Constrain
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            if (y < 0) y = 0;
+            if (y > rect.height) y = rect.height;
+
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+            
+            checkCollisions(x, y);
+        });
+
+        // Touch Tracker
+        catcherArea.addEventListener('touchmove', (e) => {
+            if (!isGameActive) return;
+            e.preventDefault();
+            const rect = catcherArea.getBoundingClientRect();
+            const touch = e.touches[0];
+            let x = touch.clientX - rect.left;
+            let y = touch.clientY - rect.top;
+
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            if (y < 0) y = 0;
+            if (y > rect.height) y = rect.height;
+
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+
+            checkCollisions(x, y);
+        });
+
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('catcher-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 90 + '%';
+            heart.style.top = '100%'; 
+            catcherArea.appendChild(heart);
+
+            // Clean up after animation
+            setTimeout(() => {
+                if (heart.parentNode) heart.remove();
+            }, 4000);
+        }
+
+        function checkCollisions(cursorX, cursorY) {
+            const hearts = document.querySelectorAll('.catcher-heart');
+            hearts.forEach(heart => {
+                const rect = heart.getBoundingClientRect();
+                const parentRect = catcherArea.getBoundingClientRect();
+                
+                // Heart position relative to container
+                const hX = rect.left - parentRect.left + rect.width/2;
+                const hY = rect.top - parentRect.top + rect.height/2;
+
+                const distance = Math.hypot(cursorX - hX, cursorY - hY);
+
+                if (distance < 40) { // 20px radius + margin
+                    heart.remove();
+                    catcherScore++;
+                    scoreEl.innerText = catcherScore;
+                }
+            });
+        }
+
+        startCatcherBtn.addEventListener('click', () => {
+            catcherStartOverlay.style.display = 'none';
+            isGameActive = true;
+            catcherScore = 0;
+            catcherTime = 30;
+            scoreEl.innerText = '0';
+            timerEl.innerText = '30';
+            cursor.style.display = 'flex';
+
+            spawnInterval = setInterval(spawnHeart, 600);
+
+            gameInterval = setInterval(() => {
+                catcherTime--;
+                timerEl.innerText = catcherTime;
+                if (catcherTime <= 0) {
+                    endCatcherGame();
+                }
+            }, 1000);
+        });
+
+        function endCatcherGame() {
+            clearInterval(gameInterval);
+            clearInterval(spawnInterval);
+            isGameActive = false;
+            cursor.style.display = 'none';
+            
+            // Remove remaining hearts
+            document.querySelectorAll('.catcher-heart').forEach(h => h.remove());
+
+            // Set Message
+            let msg = "";
+            if (catcherScore > 20) {
+                msg = "Okay… clearly the chemistry is strong. ⚡";
+            } else if (catcherScore > 10) {
+                msg = "Not bad. We’re getting there. 😉";
+            } else {
+                msg = "That’s fine. I’ll try harder. 🥺";
+            }
+
+            resultMsg.innerText = msg;
+            catcherResultOverlay.style.display = 'flex';
+            markGameComplete();
+        }
+
+        // --- 7. Interaction Logic (YES / THINK) ---
+        const yesBtn = document.getElementById('yes-btn');
+        const thinkBtn = document.getElementById('think-btn');
+        const successOverlay = document.getElementById('success-overlay');
+        const thinkOverlay = document.getElementById('think-overlay');
+
+        // Handle "Let Me Think"
+        thinkBtn.addEventListener('click', () => {
+            thinkOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        });
+
+        // Handle "YES"
+        yesBtn.addEventListener('click', () => {
+            successOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+            startConfetti();
+        });
+
+        // --- 8. Custom Canvas Confetti ---
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const colors = ['#F8C8DC', '#E75480', '#C8A2C8', '#7D4E8D', '#FFE5EC'];
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: -10,
+                size: Math.random() * 8 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: Math.random() * 2 - 1,
+                speedY: Math.random() * 3 + 2,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 2 - 1
+            };
+        }
+
+        function updateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (particles.length < 150) {
+                particles.push(createParticle());
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.y += p.speedY;
+                p.x += Math.sin(p.y * 0.01) + p.speedX;
+                p.rotation += p.rotationSpeed;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation * Math.PI / 180);
+                
+                // Draw heart or circle
+                if (i % 2 === 0) {
+                    // Circle
+                    ctx.beginPath();
+                    ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                } else {
+                    // Square (confetti paper)
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                }
+                
+                ctx.restore();
+
+                if (p.y > canvas.height) {
+                    particles[i] = createParticle();
+                }
+            }
+            animationId = requestAnimationFrame(updateParticles);
+        }
+
+        function startConfetti() {
+            if (!animationId) {
+                updateParticles();
+            }
+        }
+    </script>
+    
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+    <script>
+        // --- Firebase Configuration & Dynamic Loading ---
+        const firebaseConfig = {
+          apiKey: "AIzaSyBIyIXYNvVhJnSK58rB29K9n7SNnbaoqnc",
+          authDomain: "proposal-apoorva-sarvagy.firebaseapp.com",
+          databaseURL: "https://proposal-apoorva-sarvagy-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "proposal-apoorva-sarvagy"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Get Token from URL
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+
+        // UI Elements to update
+        const elPageTitle = document.getElementById('page-title');
+        const elHeroHeading = document.getElementById('hero-heading');
+        const elModalHeading = document.getElementById('modal-heading');
+        const elModalGreeting = document.getElementById('modal-greeting');
+        const elAppreciationText = document.getElementById('appreciation-text');
+        const elConfessionGreeting = document.getElementById('confession-greeting');
+        const elConfessionText = document.getElementById('confession-text');
+        const elSignature = document.getElementById('signature');
+        const elSuccessTitle = document.getElementById('success-title');
+        const elSuccessMessage = document.getElementById('success-message');
+
+        function showFallback() {
+            document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-size:1.5rem;color:#555;background:#FFF8F2;">This page is not available.</div>';
+        }
+
+        if (!token) {
+            showFallback();
+        } else {
+            // Fetch Data
+            db.ref("Auto-Host/" + token).once("value")
+                .then(snapshot => {
+                    if (snapshot.exists()) {
+                        const data = snapshot.val();
+                        
+                        // Fallback values if specific fields are empty in DB
+                        const herName = data.herName || "You";
+                        const yourName = data.yourName || "Me";
+                        const appreciation = data.appreciation || "You are amazing.";
+                        const confession = data.confession || "I really like you.";
+
+                        // Update Page Title
+                        elPageTitle.textContent = "For " + herName + " ❤️";
+
+                        // Update Hero Section
+                        elHeroHeading.textContent = "For " + herName + " ❤️";
+
+                        // Update Modal
+                        elModalHeading.textContent = "For " + herName;
+                        elModalGreeting.textContent = "Hi " + herName + ",";
+
+                        // Update Appreciation
+                        elAppreciationText.textContent = appreciation;
+
+                        // Update Confession
+                        elConfessionGreeting.textContent = "Dear " + herName + ",";
+                        elConfessionText.textContent = confession;
+                        elSignature.textContent = "- " + yourName;
+
+                        // Update Success Overlay
+                        elSuccessTitle.textContent = "She Said Yes! 💖"; // Keeping static or could make dynamic: herName + " Said Yes! 💖"
+                        elSuccessMessage.textContent = "You've made me the happiest person, " + herName + ".";
+
+                    } else {
+                        showFallback();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    showFallback();
+                });
+        }
+    </script>
+</body>
+</html>
